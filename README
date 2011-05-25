@@ -1,1 +1,22 @@
 A Loggly target for NLogger
+===========================
+
+your NLog.config should look something like:
+
+<?xml version="1.0" encoding="utf-8" ?>
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <extensions>
+    <add assembly="LogglyTarget"/>
+  </extensions>
+  <targets>
+    <target name="Loggly" xsi:type="Loggly" URL="<EnterYourLogglyURLHere>" bufferNumber="5" shouldBuffer="true"/>
+  </targets>
+
+  <rules>
+    <logger name="*" minlevel="debug" writeTo="Loggly" />
+  </rules>
+</nlog>
+
+bufferNumber is the number of items to buffer before you send HTTP requests (Currently one per line...)
+shouldBuffer can be true (wait till the bufferNumber hits the specified and then write to Loggly) or False (Always write)
