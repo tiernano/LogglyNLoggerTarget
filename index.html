@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+
+  <title>tiernano/LogglyNLoggerTarget @ GitHub</title>
+
+  <style type="text/css">
+    body {
+      margin-top: 1.0em;
+      background-color: #9960c3;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+    h1 { font-size: 3.8em; color: #669f3c; margin-bottom: 3px; }
+    h1 .small { font-size: 0.4em; }
+    h1 a { text-decoration: none }
+    h2 { font-size: 1.5em; color: #669f3c; }
+    h3 { text-align: center; color: #669f3c; }
+    a { color: #669f3c; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+  </style>
+</head>
+
+<body>
+  <a href="https://github.com/tiernano/LogglyNLoggerTarget"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+
+  <div id="container">
+
+    <div class="download">
+      <a href="https://github.com/tiernano/LogglyNLoggerTarget/zipball/master">
+        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
+      <a href="https://github.com/tiernano/LogglyNLoggerTarget/tarball/master">
+        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+    </div>
+
+    <h1><a href="https://github.com/tiernano/LogglyNLoggerTarget">LogglyNLoggerTarget</a>
+      <span class="small">by <a href="https://github.com/tiernano">tiernano</a></span></h1>
+
+    <div class="description">
+      An NLogger Target for Loggly
+    </div>
+
+    
+      <p>A Loggly target for NLogger
+===========================
+
+
+You will need to configure Loggly as follows:
+
+* Create a new Input. Name it what ever, but make sure your input is HTTP and JSON is off...
+* set the URL in your NLog.config to the URL you recieve from Logggly. 
+* Run some tests...
+
+That should be it. Any questions, shout... somewhere... out the window maybe?</p>
+    
+
+    
+      <h2>Dependencies</h2>
+      <p>NLog</p>
+    
+
+    
+      <h2>Install</h2>
+      <p>your NLog.config should look something like:
+
+>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+>&lt;nlog xmlns=&quot;http://www.nlog-project.org/schemas/NLog.xsd&quot;
+>      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+>  &lt;extensions&gt;
+>    &lt;add assembly=&quot;LogglyTarget&quot;/&gt;
+>  &lt;/extensions&gt;
+>  &lt;targets&gt;
+>    &lt;target name=&quot;Loggly&quot; xsi:type=&quot;Loggly&quot; URL=&quot;&lt;EnterYourLogglyURLHere&gt;&quot; bufferNumber=&quot;5&quot; shouldBuffer=&quot;true&quot;/&gt;
+>  &lt;/targets&gt;
+>
+>  &lt;rules&gt;
+>    &lt;logger name=&quot;*&quot; minlevel=&quot;Debug&quot; writeTo=&quot;Loggly&quot; /&gt;
+>  &lt;/rules&gt;
+>&lt;/nlog&gt;
+
+* bufferNumber is the number of items to buffer before you send HTTP requests (Currently one per line...)
+* shouldBuffer can be true (wait till the bufferNumber hits the specified and then write to Loggly) or False (Always write)
+</p>
+    
+
+    
+
+    
+      <h2>Authors</h2>
+      <p>= (tiernan@tiernanotoole.ie)<br/>Tiernan OToole (tierno@lotas-smartman.net)<br/>      </p>
+    
+
+    
+      <h2>Contact</h2>
+      <p>Tiernan OToole (tierno@lotas-smartman.net)<br/>      </p>
+    
+
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="https://github.com/tiernano/LogglyNLoggerTarget/zipball/master">zip</a> or
+      <a href="https://github.com/tiernano/LogglyNLoggerTarget/tarball/master">tar formats.
+    </p>
+    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/tiernano/LogglyNLoggerTarget</pre>
+    </p>
+
+    <div class="footer">
+      get the source code on GitHub : <a href="https://github.com/tiernano/LogglyNLoggerTarget">tiernano/LogglyNLoggerTarget</a>
+    </div>
+
+  </div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-220614-9");
+pageTracker._trackPageview();
+} catch(err) {}</script>"
+</body>
+</html>
