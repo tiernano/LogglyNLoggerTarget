@@ -16,7 +16,7 @@ namespace LogglyTarget
         List<string> buffer;
         public Loggly()
         {
-            this.URL = "Not Set";
+            this.URL = "NotSet";
             bufferNumber = 5;
             shouldBuffer = true;
             buffer = new List<string>();
@@ -29,8 +29,12 @@ namespace LogglyTarget
 
         protected override void Write(LogEventInfo logEvent)
         {
-            string logMessage = this.Layout.Render(logEvent);
-            sendMessageToLoggly(logMessage);
+            //if the target has not been set correctly, dont log...
+            if(URL != "NotSet")
+            {
+                string logMessage = this.Layout.Render(logEvent);
+                sendMessageToLoggly(logMessage);
+            }
         }
         protected override void Dispose(bool disposing)
         {
