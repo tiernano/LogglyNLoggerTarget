@@ -110,16 +110,13 @@
         <div class="description">
             An NLogger Target for Loggly
         </div>
-        <pre>A Loggly target for NLogger
-===========================
-
-
+        <h2>A Loggly target for NLogger</h2>
 You will need to configure Loggly as follows:
-
-* Create a new Input. Name it what ever, but make sure your input is HTTP and JSON is off...
-* set the URL in your NLog.config to the URL you recieve from Logggly. 
-* Run some tests...
-
+<ul>
+<li>Create a new Input. Name it what ever, but make sure your input is HTTP and JSON is off...</li>
+<li>set the URL in your NLog.config to the URL you recieve from Logggly. </li>
+<li>Run some tests...</li>
+</ul>
 That should be it. Any questions, shout... somewhere... out the window maybe?</pre>
         <h2>
             Dependencies</h2>
@@ -127,32 +124,23 @@ That should be it. Any questions, shout... somewhere... out the window maybe?</p
             <a href="http://nlog-project.org/">NLog</a></p>
         <h2>
             Install</h2>
-        <pre>You can now install Loggly Target using NuGET:</pre>
+        You can now install Loggly Target using NuGET:
         <div class="nuget-badge">
             <p>
                 <code>PM&gt; Install-Package LogglyTarget </code>
             </p>
         </div>
-        <pre>your NLog.config should look something like:
+        Your NLog.config should look something like:
 
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-&lt;nlog xmlns=&quot;http://www.nlog-project.org/schemas/NLog.xsd&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
-  &lt;extensions&gt;
-    &lt;add assembly=&quot;LogglyTarget&quot;/&gt;
-  &lt;/extensions&gt;
-  &lt;targets&gt;
-    &lt;target name=&quot;Loggly&quot; xsi:type=&quot;Loggly&quot; URL=&quot;&lt;EnterYourLogglyURLHere&gt;&quot; bufferNumber=&quot;5&quot; shouldBuffer=&quot;true&quot;/&gt;
-  &lt;/targets&gt;
+<script src="https://gist.github.com/4655956.js"></script>
 
-  &lt;rules&gt;
-    &lt;logger name=&quot;*&quot; minlevel=&quot;Debug&quot; writeTo=&quot;Loggly&quot; /&gt;
-  &lt;/rules&gt;
-&lt;/nlog&gt;
+<ul>
+    <li><strong>bufferNumber</strong> is the number of items to buffer before you send HTTP requests
+        (Currently one per line...)</li>
+<li><strong>shouldBuffer</strong> can be true (wait till the bufferNumber hits the specified and then write to Loggly) or False (Always write)</li>
+</ul>
 
-* bufferNumber is the number of items to buffer before you send HTTP requests (Currently one per line...)
-* shouldBuffer can be true (wait till the bufferNumber hits the specified and then write to Loggly) or False (Always write)
-</pre>
+
         <h2>
             Authors</h2>
         <p>
