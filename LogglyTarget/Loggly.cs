@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 using NLog.Targets;
 using NLog;
@@ -12,95 +10,92 @@ namespace LogglyTarget
     [Target("Loggly")]
     public class Loggly : TargetWithLayout
     {
-
-        List<string> buffer;
+        readonly List<string> _buffer;
         public Loggly()
         {
-            this.URL = "NotSet";
-            bufferNumber = 5;
-            shouldBuffer = true;
-            buffer = new List<string>();
+            Url = "NotSet";
+            BufferNumber = 5;
+            ShouldBuffer = true;
+            _buffer = new List<string>();
         }
 
 
-        public string URL { get; set; }
-        public int bufferNumber { get; set; }
-        public bool shouldBuffer { get; set; }
+        public string Url { get; set; }
+        public int BufferNumber { get; set; }
+        public bool ShouldBuffer { get; set; }
 
         protected override void Write(LogEventInfo logEvent)
         {
             //if the target has not been set correctly, dont log...
-            if(URL != "NotSet")
+            if(Url != "NotSet")
             {
-                string logMessage = this.Layout.Render(logEvent);
-                sendMessageToLoggly(logMessage);
+                string logMessage = Layout.Render(logEvent);
+                SendMessageToLoggly(logMessage);
             }
         }
         protected override void Dispose(bool disposing)
         {
-            if (buffer.Count > 0)
+            if (_buffer.Count > 0)
             {
-                buffer.ForEach(b => WriteToURL(b));
-                buffer.Clear();
+                _buffer.ForEach(b => WriteToUrl(b));
+                _buffer.Clear();
             }
             base.Dispose(disposing);
         }
 
 
 
-        private bool WriteToURL(string message)
+        private bool WriteToUrl(string message)
         {
-            HttpWebRequest req = null;
-            req = (HttpWebRequest)WebRequest.Create(URL);
+            var result = false;
+            var req = (HttpWebRequest)WebRequest.Create(Url);
             req.Method = "POST";
             req.ContentType = "application/x-www-from-urlencoded";
             req.ContentLength = message.Length;
             using (Stream write = req.GetRequestStream())
             {
-                UTF8Encoding enc = new UTF8Encoding();
+                var enc = new UTF8Encoding();
                 byte[] data = enc.GetBytes(message);
                 write.Write(data, 0, data.Length);
             }
-            using (HttpWebResponse resp = (HttpWebResponse)req.GetResponse())
+            using (var resp = (HttpWebResponse)req.GetResponse())
             {
-                if (resp.StatusCode != HttpStatusCode.OK)
+                if (resp.StatusCode == HttpStatusCode.OK)
                 {
-                    return false;
-                }
-                else
-                {
-                    using (Stream respStream = resp.GetResponseStream())
+                    using (var respStream = resp.GetResponseStream())
                     {
-                        using (StreamReader reader = new StreamReader(respStream))
-                        {
-                            string result = reader.ReadToEnd();
-                            //todo... do something with this...
-                            return true;
-                        }
+                        if (respStream != null)
+                            using (var reader = new StreamReader(respStream))
+                            {
+                                reader.ReadToEnd();
+                                //todo... do something with this...
+                                result = true;
+                            }
                     }
                 }
+                return result;
             }
         }
 
-        private void sendMessageToLoggly(string message)
+        private void SendMessageToLoggly(string message)
         {
             //is buffering enabled?
-            if (shouldBuffer)
+            if (ShouldBuffer)
             {
                 //write message to buffer
-                buffer.Add(message);
+                _buffer.Add(message);
                 //if buffer is full, send to loggly
-                if (buffer.Count == bufferNumber)
+                if (_buffer.Count == BufferNumber)
                 {
-                    buffer.ForEach(b => WriteToURL(b));     //todo: something to check that we get a true back from the writer... 
+                    _buffer.ForEach(b => WriteToUrl(b));     //todo: something to check that we get a true back from the writer... 
                     //todo: only remove items that have been sent, so older ones still eventually get logged...
                     //clear buffer
-                    buffer.Clear();
+                    _buffer.Clear();
                 }
             }
             else
             {
-                WriteToURL(message);
+                WriteToUrl(message);
             }
         }
     }
