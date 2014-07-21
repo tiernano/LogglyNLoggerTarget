@@ -1,7 +1,0 @@
-C:\entelect\LogglyNLoggerTarget\LogglyTarget\bin\Release\LogglyTarget.dll
-C:\entelect\LogglyNLoggerTarget\LogglyTarget\bin\Release\LogglyTarget.pdb
-C:\entelect\LogglyNLoggerTarget\LogglyTarget\bin\Release\NLog.dll
-C:\entelect\LogglyNLoggerTarget\LogglyTarget\bin\Release\NLog.xml
-C:\entelect\LogglyNLoggerTarget\LogglyTarget\obj\Release\LogglyTarget.csprojResolveAssemblyReference.cache
-C:\entelect\LogglyNLoggerTarget\LogglyTarget\obj\Release\LogglyTarget.dll
-C:\entelect\LogglyNLoggerTarget\LogglyTarget\obj\Release\LogglyTarget.pdb
