@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogglyTarget", "LogglyTarget.csproj", "{CAD57921-9902-430C-A349-F67EE636576D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F483C17C-6435-411C-ABB1-6CFFB8B33D58}"
@@ -12,12 +14,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F483C1
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAD57921-9902-430C-A349-F67EE636576D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAD57921-9902-430C-A349-F67EE636576D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAD57921-9902-430C-A349-F67EE636576D}.Debug|x64.ActiveCfg = Debug|x64
+		{CAD57921-9902-430C-A349-F67EE636576D}.Debug|x64.Build.0 = Debug|x64
 		{CAD57921-9902-430C-A349-F67EE636576D}.Debug|x86.ActiveCfg = Debug|x86
 		{CAD57921-9902-430C-A349-F67EE636576D}.Debug|x86.Build.0 = Debug|x86
+		{CAD57921-9902-430C-A349-F67EE636576D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAD57921-9902-430C-A349-F67EE636576D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAD57921-9902-430C-A349-F67EE636576D}.Release|x64.ActiveCfg = Release|x64
+		{CAD57921-9902-430C-A349-F67EE636576D}.Release|x64.Build.0 = Release|x64
 		{CAD57921-9902-430C-A349-F67EE636576D}.Release|x86.ActiveCfg = Release|x86
 		{CAD57921-9902-430C-A349-F67EE636576D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
