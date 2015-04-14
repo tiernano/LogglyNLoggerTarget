@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 using NLog.Targets;
 using NLog;
@@ -17,8 +15,8 @@ namespace LogglyTarget
         public Loggly()
         {
             this.URL = "NotSet";
-            bufferNumber = 5;
-            shouldBuffer = true;
+            bufferNumber = 1;
+            shouldBuffer = false;
             buffer = new List<string>();
         }
 
