@@ -93,7 +93,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="LogglyTarget.nuspec" />
+    <None Include="LogglyTarget.x64.nuspec" />
+    <None Include="LogglyTarget.anycpu.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
