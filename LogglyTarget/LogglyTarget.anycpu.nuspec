@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>LogglyTarget</id>
+    <version>0.0.2.0</version>
+    <title>Loggly Target for NLog</title>
+    <authors>tiernano</authors>
+    <owners>tiernano</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-RL</licenseUrl>
+    <projectUrl>https://github.com/tiernano/LogglyNLoggerTarget/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An NLog target for Loggly</description>
+    <releaseNotes>Updating to use NLog 3.2.1. Any CPU and x64 builds abailable</releaseNotes>
+    <copyright>Copyright 2015 LSN</copyright>
+    <tags>NLog Logging Loggly</tags>
+    <dependencies>
+      <dependency id="NLog" version="3.2.1" />
+    </dependencies>
+  </metadata>
+  <files>
+	<file src="\bin\release\logglytarget.dll" target="lib"/>
+  </files>
+  
+</package>
