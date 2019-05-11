@@ -47,9 +47,14 @@ steps:
   inputs:
     command: 'pack'
     feedsToUse: 'select'
-    packagesToPack: 'logglytarget/LogglyTarget.x64.nuspec'
-    versioningScheme: 'byPrereleaseNumber'
-    majorVersion: '0'
-    minorVersion: '3'
-    patchVersion: '0'
-    includeSymbols: true
+    packagesToPack: 'logglytarget/LogglyTarget.anycpu.nuspec'
+    versioningScheme: 'byBuildNumber'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    feedsToUse: 'select'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'private'
+    versioningScheme: 'off'
