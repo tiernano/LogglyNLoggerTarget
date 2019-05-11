@@ -45,13 +45,6 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    command: 'pack'
-    feedsToUse: 'select'
-    packagesToPack: 'logglytarget/LogglyTarget.anycpu.nuspec'
-    versioningScheme: 'byBuildNumber'
-
-- task: NuGetCommand@2
-  inputs:
     command: 'push'
     feedsToUse: 'select'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
