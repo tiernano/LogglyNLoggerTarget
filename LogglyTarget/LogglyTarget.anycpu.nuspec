@@ -21,7 +21,7 @@
     </dependencies>
   </metadata>
   <files>
-	<file src="\bin\release\logglytarget.dll" target="lib"/>
+	<file src="\bin\$configuration$\$target_framework$\logglytarget.dll" target="lib\$target_framework$"/>
   </files>
   
 </package>
