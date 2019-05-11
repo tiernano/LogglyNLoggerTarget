@@ -31,3 +31,25 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    feedsToUse: 'select'
+    packagesToPack: 'logglytarget/LogglyTarget.anycpu.nuspec'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '0'
+    minorVersion: '3'
+    patchVersion: '0'
+    includeSymbols: true
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    feedsToUse: 'select'
+    packagesToPack: 'logglytarget/LogglyTarget.x64.nuspec'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '0'
+    minorVersion: '3'
+    patchVersion: '0'
+    includeSymbols: true
