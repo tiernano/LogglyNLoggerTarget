@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v1.0.0
         with:
           name: published_webapp
-          path: LogglyTarget\bin\Release\Publish
+          path: LogglyNLoggerTarget\LogglyTarget\bin\Release
